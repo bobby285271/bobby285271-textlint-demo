@@ -1,14 +1,14 @@
 name: Textlint
 
 on:
-  pull_request:
-  push:
-    branches:
-      - master
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
 
 jobs:
   fix:
     runs-on: ubuntu-latest
+    if: github.repository_owner == 'bobby285271'
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v2
@@ -25,4 +25,3 @@ jobs:
         commit_user_name: github-actions[bot]
         commit_user_email: github-actions[bot]@users.noreply.github.com
         commit_author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
-      if: github.repository == 'bobby285271/textlint-demo'
