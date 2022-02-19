@@ -1,10 +1,10 @@
 name: Textlint
 
 on:
-  push:
-    branches: [ master ]
   pull_request:
-    branches: [ master ]
+  push:
+    branches:
+      - master
 
 jobs:
   fix:
@@ -16,14 +16,13 @@ jobs:
         node-version: '16'
         cache: 'npm'
     - run: npm install
-    - run: ./node_modules/.bin/textlint *.md --fix
+    - run: ./node_modules/.bin/textlint . --fix
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: '[ci skip] Automatic textlint fixes'
         branch: 'master'
-        file_pattern: './\*.md'
+        file_pattern: ':/*.md'
         commit_user_name: github-actions[bot]
         commit_user_email: github-actions[bot]@users.noreply.github.com
         commit_author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
       if: github.repository == 'bobby285271/textlint-demo'
-
