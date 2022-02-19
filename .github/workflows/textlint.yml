@@ -21,9 +21,9 @@ jobs:
       with:
         commit_message: '[ci skip] Automatic textlint fixes'
         branch: 'master'
-        file_pattern: '*.md'
+        file_pattern: './\*.md'
         commit_user_name: github-actions[bot]
         commit_user_email: github-actions[bot]@users.noreply.github.com
         commit_author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
-      if: github.repository == 'bobby285271/textlint'
+      if: github.repository == 'bobby285271/textlint-demo'
 
